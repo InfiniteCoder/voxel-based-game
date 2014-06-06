@@ -2,15 +2,29 @@ package net.infinitecoder.voxel;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import org.lwjgl.util.glu.GLU;
+
 public class RenderUtil {
 	public static void initGL() {
+		glShadeModel(GL_SMOOTH);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 
+        glClearDepth(1.0); 
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LEQUAL); 
+        
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0, Window.getWidth(), 0, Window.getHeight(), .1f, 1f);
+		GLU.gluPerspective(
+		           45.0f,
+		           (float)Window.getWidth()/(float)Window.getHeight(),
+		           0.1f,
+		           100.0f);
 		glMatrixMode(GL_MODELVIEW);
+		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	}
 	
 	public static void clearScreen() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glLoadIdentity();
 	}
 }
