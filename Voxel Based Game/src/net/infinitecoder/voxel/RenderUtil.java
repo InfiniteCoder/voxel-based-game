@@ -10,7 +10,13 @@ public class RenderUtil {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 
         glClearDepth(1.0); 
         glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LEQUAL); 
+        glDepthFunc(GL_LEQUAL);
+        
+        glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		
+		glCullFace(GL_CW);
+		glEnable(GL_CULL_FACE);
         
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -18,7 +24,7 @@ public class RenderUtil {
 		           45.0f,
 		           (float)Window.getWidth()/(float)Window.getHeight(),
 		           0.1f,
-		           100.0f);
+		           300.0f);
 		glMatrixMode(GL_MODELVIEW);
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	}
