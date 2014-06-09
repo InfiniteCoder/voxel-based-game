@@ -13,7 +13,7 @@ public class ColoredBlock extends Block {
 	}
 	
 	public ColoredBlock(int blockID, Vector3f size, Vector3f color) {
-		this(blockID, size, new Vector4f(color.x, color.y, color.z, 1));
+		this(blockID, size, new Vector4f(color.x, color.y, color.z, 1F));
 	}
 	
 	public ColoredBlock(int blockID, Vector3f size, Vector4f color) {
